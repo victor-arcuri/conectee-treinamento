@@ -21,5 +21,5 @@ CREATE TABLE IF NOT EXISTS producoes (
 );
 
 -- Importação de dados
-\COPY pesquisadores(lattes_id, nome) FROM '/docker-entrypoint-initdb.d/pesquisadores.csv' DELIMITER ',' CSV HEADER;
-\COPY producoes(pesquisadores_id, issn, nomeArtigo, anoArtigo) FROM '/docker-entrypoint-initdb.d/producoes.csv' DELIMITER ',' CSV HEADER;
+\COPY pesquisadores FROM '/docker-entrypoint-initdb.d/pesquisadores.csv' DELIMITER ',' CSV HEADER;
+\COPY producoes FROM '/docker-entrypoint-initdb.d/producoes.csv' DELIMITER ',' CSV HEADER;
