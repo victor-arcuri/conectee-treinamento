@@ -19,6 +19,3 @@ CREATE TABLE IF NOT EXISTS producoes (
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
-
-copy pesquisadores from '/docker-entrypoint-initdb.d/pesquisadores.csv' delimiter ',' csv header;
-copy producoes from '/docker-entrypoint-initdb.d/producoes.csv' delimiter ',' csv header;
