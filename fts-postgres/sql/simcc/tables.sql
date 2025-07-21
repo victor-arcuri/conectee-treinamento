@@ -19,7 +19,3 @@ CREATE TABLE IF NOT EXISTS producoes (
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 );
-
--- Importação de dados
-\COPY pesquisadores FROM '/docker-entrypoint-initdb.d/pesquisadores.csv' DELIMITER ',' CSV HEADER;
-\COPY producoes FROM '/docker-entrypoint-initdb.d/producoes.csv' DELIMITER ',' CSV HEADER;
