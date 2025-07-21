@@ -13,6 +13,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init_db.sh:/docker-entrypoint-initdb.d/init_db.sh:ro
+      - ./sql/simcc/tables.sql:/docker-entrypoint-initdb.d/tables.sql:ro
+      - ./sql/simcc/pesquisadores.csv:/docker-entrypoint-initdb.d/pesquisadores.csv:ro
+      - ./sql/simcc/producoes.csv:/docker-entrypoint-initdb.d/producoes.csv:ro
 
 volumes:
   postgres_data:
