@@ -1,13 +1,13 @@
--- DOCUMENTO
-select 
-    producoes.nomeArtigo || ' ' || 
-    producoes.anoArtigo || ' ' || 
-    producoes.issn || ' ' ||
-    pesquisadores.nome || ' ' ||
-    pesquisadores.lattes_id as document
-from producoes 
-join
-    pesquisadores on producoes.pesquisadores_id = pesquisadores.pesquisadores_id;
+    -- DOCUMENTO
+    select 
+        producoes.nomeArtigo || ' ' || 
+        producoes.anoArtigo || ' ' || 
+        producoes.issn || ' ' ||
+        pesquisadores.nome || ' ' ||
+        pesquisadores.lattes_id as document
+    from producoes 
+    join
+        pesquisadores on producoes.pesquisadores_id = pesquisadores.pesquisadores_id;
 
 
 -- DOCUMENTO EM TS_VECTOR
