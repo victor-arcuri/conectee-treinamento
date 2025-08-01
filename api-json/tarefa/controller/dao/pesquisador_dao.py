@@ -5,17 +5,17 @@ from banco import conexao_singleton as cs
 conexao = cs.Conexao().get_conexao()
 
 # Função para salvar um novo pesquisador no banco de dados
-def salvar_novo_pesquisador(nome: str, lattes_id: str) -> str:
+def salvar_novo_pesquisador(nome: str, lattes_id: str, pesquisadores_id: str) -> str:
     # SQL para inserir um novo registro na tabela "pesquisadores"
     sql = """
-            INSERT INTO pesquisadores (lattes_id, nome)
-            VALUES (%s, %s)
+            INSERT INTO pesquisadores (lattes_id, nome, pesquisadores_id)
+            VALUES (%s, %s, %s)
         """
     
     try:
         # Utiliza a conexão para abrir um cursor e executar o SQL
         with conexao.cursor() as cursor:
-            cursor.execute(sql, (lattes_id, nome))
+            cursor.execute(sql, (lattes_id, nome, pesquisadores_id))
             # Confirma a transação no banco
             conexao.commit()
             

@@ -18,9 +18,7 @@ def adicionar(pesquisador: Pesquisador):
     resposta = salvar_novo_pesquisador(
         nome = pesquisador.nome,
         lattes_id = pesquisador.lattes_id,
-        pesquisador_id=pesquisador.pesquisadores_id
-
-       
+        pesquisadores_id = pesquisador.pesquisadores_id
     )
     
     if 'duplicate' in resposta:
@@ -39,7 +37,6 @@ def listar():
 # Rota para apagar um pesquisador com base no lattes_id
 @pesquisador_router.delete("/pesquisadores/{lattes_id}", response_model=str)
 def apagar(lattes_id: str):
-    print("chegou aqui")
     resposta = apagar_por_lattes_id(lattes_id)
     
     if 'inválido' in resposta:
