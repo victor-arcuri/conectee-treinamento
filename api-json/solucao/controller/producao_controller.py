@@ -58,15 +58,3 @@ def atualizar(producao: Producao):
         raise HTTPException(status_code=400, detail=resposta)
     
     return producao
-
-# Rota para listar as produções de um pesquisador por seu lattes_id
-@producao_router.get("/producoes/{lattes_id}", response_model = List[Producao])
-def listar(lattes_id: str):
-    producoes = listar_todas_producoes()
-    respostaPesquisadores = pegar_pesquisador_por_id(lattes_id) 
-    if 'inválido' in respostaPesquisadores:
-        raise HTTPException(status_code=400, detail=respostaPesquisadores)
-    
-    producoes = [producao for producao in producoes if producao["pesquisadores_id"] ==  respostaPesquisadores["pesquisadores_id"]]
-    
-    return producoes

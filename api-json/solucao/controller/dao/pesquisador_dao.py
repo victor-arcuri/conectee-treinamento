@@ -124,3 +124,30 @@ def pegar_pesquisador_por_id(lattes_id: str) -> str:
         return f"Erro ao conseguir pesquisador: pesquisador inexistente ou ID inválido."
 
         
+# Função para retornar o pesquisador por seu pesquisadores id
+def pegar_pesquisador_por_id_tabela(pesquisadores_id: str) -> str:
+    # SQL para selecionar o pesquisador da tabela "pesquisadores" a partir de seu lattes_id
+    sql: str = "SELECT * FROM pesquisadores WHERE pesquisadores_id = %s"
+    
+    # Utiliza a conexão para abrir um cursor e executar o SQL
+    try:
+        with conexao.cursor() as cursor:
+            cursor.execute(sql, (pesquisadores_id,))
+
+            # Obtém todos os resultados da consulta
+            resultado = cursor.fetchall()
+            if (len(resultado) == 0):
+                raise
+            
+            # Cria uma lista das colunas retornadas pela consulta
+            colunas = [desc[0] for desc in cursor.description]
+            # Mapeia os resultados em dicionários com chave-valor
+
+            dados = [dict(zip(colunas, linha)) for linha in resultado]
+
+            return dados[0]
+
+    except:
+        return f"Erro ao conseguir pesquisador: pesquisador inexistente ou ID inválido."
+
+        
